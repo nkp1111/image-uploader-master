@@ -3,7 +3,7 @@ import useGlobalContext from '../context'
 
 const ImageShow = () => {
   const { imageUploaded, setImageUploaded } = useGlobalContext()
-  const { link: { img, secure_img } } = imageUploaded
+  const { link: { img } } = imageUploaded
   return (
     <>
       <div className="d-flex flex-column align-items-center w-100 position-relative">

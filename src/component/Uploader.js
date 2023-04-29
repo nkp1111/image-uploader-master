@@ -4,7 +4,7 @@ import image from '../assets'
 import useGlobalContext from '../context'
 
 const Uploader = () => {
-  const { loading, setLoading } = useGlobalContext()
+  const { setLoading } = useGlobalContext()
   const imgRef = useRef()
   const dropRef = useRef()
 

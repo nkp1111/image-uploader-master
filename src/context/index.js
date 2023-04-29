@@ -18,7 +18,6 @@ const AppProvider = ({ children }) => {
       formData.append("file", image);
       formData.append("upload_preset", unsignedPreset);
 
-      console.log(formData)
       fetch(url, {
         method: "POST",
         body: formData
