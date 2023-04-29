@@ -9,20 +9,36 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     const uploadImage = async (image) => {
-      fetch(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`, {
+
+      const cloudName = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME
+      const unsignedPreset = process.env.REACT_APP_UNSIGNED_PRESET
+      const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`
+
+      const formData = new FormData();
+      formData.append("file", image);
+      formData.append("upload_preset", unsignedPreset);
+
+      console.log(formData)
+      fetch(url, {
         method: "POST",
-        body: loading.data
+        body: formData
       })
-        .then(res => res.text())
+        .then(res => res.json())
         .then(data => {
-          console.log(data)
+          setImageUploaded({
+            state: true,
+            link: {
+              img: data.url, secure_img: data.secure_url
+            }
+          })
         })
     }
 
-    if (loading.state) {
-      uploadImage(loading.data)
+    const { state, data } = loading
+    if (state) {
+      uploadImage(data)
     }
-  }, [loading.data, loading.state]);
+  }, [loading]);
 
   return (
     <AppContext.Provider
