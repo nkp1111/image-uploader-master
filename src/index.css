@@ -1,13 +1,58 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+
+:root {
+  --very-light-blue: #97BEF4;
+  --light-white: #F6F8FB;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+}
+
+.card {
+  width: 40%;
+  min-width: 350px;
+}
+
+.card h1 {
+  font-size: 1.5rem;
+}
+
+.card p {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+figure {
+  border: 1px solid var(--very-light-blue);
+  background: var(--light-white);
+
+  cursor: grab;
+}
+
+/* progress  */
+.progress {
+  height: 5px;
+  width: 300px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transition: all 0.3s linear;
+}
+
+.link-text {
+  width: 80%;
+  overflow-x: visible;
+}
+
+.link-text::-webkit-scrollbar {
+  display: none;
 }
