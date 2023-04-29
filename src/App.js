@@ -1,10 +1,14 @@
 import React from 'react'
 
+import { Uploader } from './component'
+
 const App = () => {
   return (
-    <div>
-
-    </div>
+    <main className="card">
+      <div className="card-body d-flex flex-column align-items-center">
+        <Uploader />
+      </div>
+    </main>
   )
 }
 
