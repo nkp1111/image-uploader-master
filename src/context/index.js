@@ -31,6 +31,7 @@ const AppProvider = ({ children }) => {
               img: data.url, secure_img: data.secure_url
             }
           })
+          setLoading({ state: false, data: null })
         })
     }
 

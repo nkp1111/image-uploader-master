@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Uploader, ProgressBar } from './component'
+import { Uploader, ProgressBar, ImageShow } from './component'
 import useGlobalContext from './context'
 
 const App = () => {
@@ -10,9 +10,7 @@ const App = () => {
     <main className="card">
       <div className="card-body d-flex flex-column align-items-center">
         {imageUploaded.state
-          ? (<div>
-            <img src={imageUploaded.link.img} alt="" />
-          </div>)
+          ? <ImageShow />
           : loading.state
             ? <ProgressBar />
             : <Uploader />}
