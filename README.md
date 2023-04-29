@@ -7,8 +7,8 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
-      Demo
+    <a href="https://nkp1111-image-uploader.netlify.app/">
+      Live App
     </a>
     <span> | </span>
     <a href="https://github.com/nkp1111/image-uploader-master">
