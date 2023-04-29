@@ -6,24 +6,54 @@ import useGlobalContext from '../context'
 const Uploader = () => {
   const { loading, setLoading } = useGlobalContext()
   const imgRef = useRef()
+  const dropRef = useRef()
+
+
+  const readFileData = (img) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(img);
+    reader.addEventListener('load', (e) => {
+      setLoading({ state: true, data: e.target.result })
+    })
+  }
 
   useEffect(() => {
-    const reader = new FileReader();
-
-    imgRef.current.addEventListener("change", (e) => {
+    const imgEl = imgRef.current
+    const getImageData = (e) => {
       const img = e.target.files[0]
-      reader.readAsDataURL(img);
-      reader.addEventListener('load', (e) => {
-        setLoading({ state: true, data: e.target.result })
-      })
+      readFileData(img)
+    }
+
+    imgEl.addEventListener("change", (e) => getImageData(e))
+
+    return () => imgEl.removeEventListener("change", (e) => getImageData(e))
+  });
+
+  useEffect(() => {
+    const dropEl = dropRef.current
+
+    dropEl.addEventListener("dragover", (e) => {
+      e.preventDefault()
+      e.currentTarget.classList.add("drag")
     })
-  }, [setLoading]);
+
+    dropEl.addEventListener("dragleave", (e) => {
+      e.currentTarget.classList.remove("drag")
+    })
+
+    dropEl.addEventListener("drop", (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      let img = e.dataTransfer.files[0]
+      readFileData(img)
+    })
+  });
 
   return (
     <>
       <h1>Upload your image</h1>
       <p>File should be Jpeg, Png,...</p>
-      <figure className="d-flex flex-column p-2 my-3">
+      <figure className="d-flex flex-column p-5 my-3" ref={dropRef}>
         <img src={image} alt="." className="mx-auto" />
         <figcaption>Drag & Drop your image here</figcaption>
       </figure>

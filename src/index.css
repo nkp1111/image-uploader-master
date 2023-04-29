@@ -17,6 +17,7 @@ body {
 .card {
   width: 500px;
   margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .card h1 {
@@ -31,10 +32,14 @@ body {
 
 /* uploader  */
 figure {
-  border: 1px solid var(--very-light-blue);
+  border: 2px var(--very-light-blue) dashed;
   background: var(--light-white);
 
   cursor: grab;
+}
+
+figure.drag {
+  box-shadow: 0 0 10px #00000075;
 }
 
 /* progress bar  */
